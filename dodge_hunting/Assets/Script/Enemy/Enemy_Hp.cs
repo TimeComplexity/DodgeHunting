@@ -44,6 +44,13 @@ public class Enemy_Hp : MonoBehaviour
             enemyClear(Variables.enemySwitch, Variables.enemyLevel);
             //PlayerPrefs.SetInt(enemyName, enemyLevel);
 
+            if (Variables.enemySwitch==1 && Variables.enemyLevel==4)
+			{
+                if(GameObject.FindGameObjectWithTag("miniEnemy"))
+                {
+                    GameObject.FindGameObjectWithTag("miniEnemy").SetActive(false);
+                }
+			}
             Bar.SetActive(false);
 			if(_enemy == Variables.enemy1 && Time.timeScale!=0)
 			{
@@ -74,7 +81,7 @@ public class Enemy_Hp : MonoBehaviour
     void enemyClear(int enemy, int level)
     {
         enemyLevel = PlayerPrefs.GetInt(Variables.enemyName[enemy]);
-        // 0 안열림 1 이지 2 노말 3 하드 4 익스 5 대장 6 대장클
+        // 0 안열림 1 이지 2 노말 3 하드 4 익스 5 ㅄ 6 ㅄ클
         if (level == 0 && PlayerPrefs.GetInt(Variables.enemyName[enemy]) < 2)
         {
             enemyLevel = 2;

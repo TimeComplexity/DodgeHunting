@@ -173,6 +173,8 @@ public class Player_Move : MonoBehaviour {
 		}
 		if(coll.gameObject.tag == "miniEnemy" && isInvincible()==false) // 미니에너미와 충돌체크 
 		{
+			if(PlayerPrefs.GetInt("isVibrate")==1)
+				Handheld.Vibrate();
 			--playerHp;
 			hitCount = 0;
 		}
@@ -182,6 +184,8 @@ public class Player_Move : MonoBehaviour {
 		}
 		if(coll.gameObject.tag == "Mine" && isInvincible()==false) // 마인과 충돌체크
 		{
+			if(PlayerPrefs.GetInt("isVibrate")==1)
+				Handheld.Vibrate();
 			--playerHp;
 			Destroy (coll.gameObject);
 			mineHeight=1.0f;
@@ -227,8 +231,17 @@ public class Player_Move : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col)
 	{
+		if(col.gameObject.tag=="FirePillar" && isInvincible()==false)
+		{
+			if(PlayerPrefs.GetInt("isVibrate")==1)
+				Handheld.Vibrate();
+			--playerHp;
+			hitCount = 0;
+		}
 		if(col.gameObject.tag=="Scart" && isInvincible()==false)
 		{
+			if(PlayerPrefs.GetInt("isVibrate")==1)
+				Handheld.Vibrate();
 			--playerHp;
 			hitCount = 0;
 			hitDir = col.gameObject.transform.position - transform.position;
@@ -239,6 +252,8 @@ public class Player_Move : MonoBehaviour {
 		}
 		if(col.gameObject.tag == "wolfArea")
 		{
+			if(PlayerPrefs.GetInt("isVibrate")==1)
+				Handheld.Vibrate();
 			hitCount = 0;
 			hitDir = col.gameObject.transform.position - transform.position;
 			hitAngle = Mathf.Atan2(hitDir.z, hitDir.x);
@@ -283,7 +298,8 @@ public class Player_Move : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "Enemy" && isInvincible()==false)
 		{
-			Handheld.Vibrate();
+			if(PlayerPrefs.GetInt("isVibrate")==1)
+				Handheld.Vibrate();
 			switch(coll.gameObject.GetComponent<Enemy_Move>()._level)
 			{
 			case 0:

@@ -21,6 +21,11 @@ public class SceneManager : MonoBehaviour
     public void ToHunting() { Application.LoadLevel("MonsterSelectScene"); }
     public void ToStore()   { Application.LoadLevel("StoreScene"); }
 
+    public void SheepHunt()
+    {
+        Variables.enemySwitch = -1;
+        Application.LoadLevel("Scene");
+    }
     public void BoarHunt()  {
         Variables.enemySwitch = 0;
         if (PlayerPrefs.GetInt(Variables.enemyName[Variables.enemySwitch]) >= 0)

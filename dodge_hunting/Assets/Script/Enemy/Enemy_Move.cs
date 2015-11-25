@@ -6,8 +6,9 @@ public class Enemy_Move : MonoBehaviour {
 
 	public GameObject _player;
 	public GameObject _EnemyHp;
-	public GameObject _boar;
-	public GameObject _wolf;
+    public GameObject _sheep;
+    public GameObject _boar;
+    public GameObject _wolf;
 	public GameObject _miniWolf;
 	public GameObject _suri;
 	public GameObject _kan;
@@ -53,7 +54,18 @@ public class Enemy_Move : MonoBehaviour {
 	void Start () {
 		_player = GameObject.Find ("/Player");
 		eHP = _EnemyHp.GetComponent<Enemy_Hp>();
-		if (Variables.enemySwitch == 0)
+
+        if(Variables.enemySwitch == -1)
+        {
+            Debug.Log("양 시작");
+            Debug.Log(Variables.enemySwitch);
+            Debug.Log(_sheep);
+            _level = -1;
+            _sheep.SetActive(true);
+            com = GetComponent<Sheep>();
+            com.setCool();
+        }
+		else if (Variables.enemySwitch == 0)
 		{
 			Debug.Log("맷돼지 시작");
 			_boar.SetActive(true);
@@ -71,7 +83,8 @@ public class Enemy_Move : MonoBehaviour {
 		{
 			Debug.Log("수리 시작");
 			_suri.SetActive(true);
-			com = GetComponent<Suri>();	
+			com = GetComponent<Suri>();
+            GetComponent<Rigidbody>().useGravity = false;
 			com.setCool();
 		}
 		else if (Variables.enemySwitch == 101)
@@ -111,7 +124,8 @@ public class Enemy_Move : MonoBehaviour {
 		}
 		if(coll.gameObject.tag=="Player" && wbSw==false)
 		{
-			sturnSw=true;
+            if(Variables.enemySwitch != 3)
+			    sturnSw=true;
 			cantmoveCount = 180;
 		}
 		if (coll.gameObject.tag == "Wall" && skillSw==1 && wbSw==false && Variables.enemySwitch==0) 
@@ -324,7 +338,7 @@ public class Enemy_Move : MonoBehaviour {
 				mineHeight-=0.2f;
 			}
 		}
-		else if(cycloneSw==true)
+	/*	else if(cycloneSw==true)
 		{
 			if(cycloneHeight>0)
 			{
@@ -339,7 +353,7 @@ public class Enemy_Move : MonoBehaviour {
 					transform.position = currentPos;
 				}
 			}
-		}
+		}*/
 		else if(wbSw==true)
 		{
 			transform.Translate (Vector3.left*0.8f);

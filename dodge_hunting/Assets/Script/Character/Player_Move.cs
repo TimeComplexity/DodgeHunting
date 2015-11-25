@@ -148,30 +148,32 @@ public class Player_Move : MonoBehaviour {
             speed_y = 0;
             hitSw = true;
         }
-        if (coll.gameObject.tag == "Enemy" && isInvincible()==false)
-		{
-            if(PlayerPrefs.GetInt("isVibrate")==1)
+        if (coll.gameObject.tag == "Enemy" && isInvincible() == false)
+        {
+            if (PlayerPrefs.GetInt("isVibrate") == 1)
                 Handheld.Vibrate();
-			switch(coll.gameObject.GetComponent<Enemy_Move>()._level)
-			{
-			case 0:
-				--playerHp;
-				break;
-			case 1:
-				playerHp-=2;
-				break;
-			case 2:
-				playerHp-=3;
-				break;
-			}
-			hitCount=0;
-			hitDir = coll.gameObject.transform.position-transform.position;
-			hitAngle = Mathf.Atan2(hitDir.z,hitDir.x);
-			speed_x=0;
-			speed_y=0;
-			hitSw=true;
-		}
-		if(coll.gameObject.tag == "miniEnemy" && isInvincible()==false) // 미니에너미와 충돌체크 
+            switch (coll.gameObject.GetComponent<Enemy_Move>()._level)
+            {
+                case -1:
+                    break;
+                case 0:
+                    --playerHp;
+                    break;
+                case 1:
+                    playerHp -= 2;
+                    break;
+                case 2:
+                    playerHp -= 3;
+                    break;
+            }
+            hitCount = 0;
+            hitDir = coll.gameObject.transform.position - transform.position;
+            hitAngle = Mathf.Atan2(hitDir.z, hitDir.x);
+            speed_x = 0;
+            speed_y = 0;
+            hitSw = true;
+        }
+        if (coll.gameObject.tag == "miniEnemy" && isInvincible()==false) // 미니에너미와 충돌체크 
 		{
 			if(PlayerPrefs.GetInt("isVibrate")==1)
 				Handheld.Vibrate();

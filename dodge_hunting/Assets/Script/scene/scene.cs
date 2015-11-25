@@ -20,8 +20,20 @@ public class scene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if (Variables.enemyLevel == -1)
+        {
+            Variables.enemy1 = Instantiate(child, new Vector3(8.0f, 0.5f, 0.0f), Quaternion.identity) as GameObject;
+            Enemy_Hp com = enemyHp1.GetComponent<Enemy_Hp>();
+            com._enemy = Variables.enemy1;
+            com.maxHp *= 10f;
+            Variables.enemy1.GetComponent<Enemy_Move>()._EnemyHp = enemyHp1;
+            enemyHp2.SetActive(false);
 
-		if (Variables.enemyLevel == 0)
+            Indicator ind = arrow1.GetComponent<Indicator>();
+            ind._enemy = Variables.enemy1;
+            arrow2.SetActive(false);
+        }
+        if (Variables.enemyLevel == 0)
 		{
 			Variables.enemy1 = Instantiate(child, new Vector3(8.0f, 0.5f, 0.0f), Quaternion.identity) as GameObject;
             //Variables.enemy1.name = "child";

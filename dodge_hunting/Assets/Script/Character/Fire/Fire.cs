@@ -137,7 +137,7 @@ public class Fire : MonoBehaviour {
 				float x, z;
 				x=Random.Range(-15.0f,15.0f);
 				z=Random.Range(-8.0f,8.0f);
-				Vector3 currentPos = new Vector3(x,-2.2f,z);
+				Vector3 currentPos = new Vector3(x,-1.9f,z);
 				Instantiate(_FirePillar, currentPos, com.transform.rotation);
 			}
 			cool[2]=cooltime[2]*Time.captureFramerate;
@@ -207,7 +207,7 @@ public class Fire : MonoBehaviour {
 		else if(fairyCount==600/(resetCount+1))
 		{
 			com.maxSpeed=com._maxSpeed;
-			if(Variables.enemyLevel==2 || Variables.enemyLevel==3)
+			if(Variables.enemyLevel=="어려움" || Variables.enemyLevel=="매우어려움")
 			{
 				Enemy_Move em2 = Variables.enemy2.GetComponent<Enemy_Move>();
 				em2.maxSpeed=em2._maxSpeed;

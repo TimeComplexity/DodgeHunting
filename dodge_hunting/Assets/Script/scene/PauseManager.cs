@@ -4,17 +4,19 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
-
+    public GameObject Player; //체력을 가져와 별을 표시하기 위해서
     public GameObject PausePanelCanvas;
+    public GameObject ResultCanvas;
     public GameObject PauseButton;
     public GameObject SkillButton;
     public GameObject TouchPad;
     public GameObject Countdown;
     public Toggle pauseToggle;
 
-    public Text title;
+    public Image ResultStarImage;
 
     public Sprite[] CountdownSprite = new Sprite[3];
+    public Sprite[] StarRankSprite = new Sprite[4];
 
     //public static bool isVibrationOn = true;  Gamemanaver.cs로 옮김
 
@@ -24,10 +26,14 @@ public class PauseManager : MonoBehaviour
     void Awake()
     {
         PausePanelCanvas.GetComponent<Canvas>().enabled = false;
+        ResultCanvas.GetComponent<Canvas>().enabled = false;
         PauseButton.SetActive(false);
         SkillButton.SetActive(false);
 
         StartCoroutine(pauseFor(3));
+
+        Debug.Log("321321321");
+
         if (PlayerPrefs.GetInt("isVibrate", 1) == 1)
             pauseToggle.isOn = true;
         else
@@ -49,6 +55,7 @@ public class PauseManager : MonoBehaviour
             if (i == Time.captureFramerate * 1)
                 Countdown.GetComponent<Image>().sprite = CountdownSprite[1];
 
+
             if (i == Time.captureFramerate * 2)
                 Countdown.GetComponent<Image>().sprite = CountdownSprite[0];
 
@@ -67,6 +74,7 @@ public class PauseManager : MonoBehaviour
         PlayerPrefs.SetInt("isVibrate", PlayerPrefs.GetInt("isVibrate",1) * -1);
         //Variables.isVibrationOn = !Variables.isVibrationOn;
     }
+
     public void TogglePauseMenu(int sw)
     {
         if (PausePanelCanvas.GetComponent<Canvas>().enabled)
@@ -80,14 +88,6 @@ public class PauseManager : MonoBehaviour
         }
         else
         {
-            if (sw == -1)
-            {
-                title.text = "패배";
-            }
-            else if (sw == 1)
-            {
-                title.text = "승리";
-            }
             PausePanelCanvas.GetComponentInChildren<Canvas>().enabled = true;
             PauseButton.SetActive(false);
             SkillButton.SetActive(false);

@@ -12,7 +12,7 @@ public class Enemy_Hp : MonoBehaviour
     public Slider hpBar;
 	public Text hpText;
     public float maxHp; //플레이 시간을 에디터에서 정할 수 있게
-    public float _damage; //적 hp에 영향을 주는 스킬?
+    public float DefaultDamage; //원래 _damage
 	public float damage;
     int enemyLevel;
 
@@ -25,8 +25,8 @@ public class Enemy_Hp : MonoBehaviour
         hpBar.maxValue = maxHp;
         hpBar.value = maxHp;
         //enemyHp = maxHp;
-        _damage = 1f/60f; //60fps 기준 1초마다 hp 1 감소 1프레임당 0.017
-		damage = _damage;
+        DefaultDamage = 1f/60f; //60fps 기준 1초마다 hp 1 감소 1프레임당 0.017
+		damage = DefaultDamage;
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class Enemy_Hp : MonoBehaviour
             Bar.SetActive(false);
 			if(_enemy == Variables.enemy1 && Time.timeScale!=0)
 			{
-				pauseManager.GetComponent<PauseManager>().TogglePauseMenu(1);
+				pauseManager.GetComponent<PauseManager>().ShowResult();
 			}
         }
 

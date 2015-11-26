@@ -75,6 +75,20 @@ public class PauseManager : MonoBehaviour
         //Variables.isVibrationOn = !Variables.isVibrationOn;
     }
 
+    public void ShowResult()
+    {
+        Time.timeScale = 0f;
+
+        int playerHp = Player.GetComponent<Player_Move>().playerHp;
+
+        if (playerHp < 0)
+            playerHp = 0;
+
+        ResultCanvas.GetComponent<Canvas>().enabled = true;
+
+        ResultStarImage.GetComponent<Image>().sprite = StarRankSprite[playerHp];
+    }
+
     public void TogglePauseMenu(int sw)
     {
         if (PausePanelCanvas.GetComponent<Canvas>().enabled)

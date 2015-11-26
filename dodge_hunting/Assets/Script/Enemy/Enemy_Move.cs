@@ -213,7 +213,7 @@ public class Enemy_Move : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Blaze")
 		{
-			eHP.damage = eHP._damage*2.0f;
+			eHP.damage = eHP.DefaultDamage*2.0f;
 			maxSpeed = defaultMaxSpeed*1.5f;
 		}
 		if(col.gameObject.tag == "Cyclone" && cycloneSw==false)
@@ -246,7 +246,7 @@ public class Enemy_Move : MonoBehaviour {
 		if(col.gameObject.tag=="Blaze")
 		{
 			Enemy_Hp eHP = _EnemyHp.GetComponent<Enemy_Hp>();
-			eHP.damage = eHP._damage;
+			eHP.damage = eHP.DefaultDamage;
 			maxSpeed = defaultMaxSpeed;
 		}
 		if(col.gameObject.tag=="FirePillar")
@@ -274,7 +274,7 @@ public class Enemy_Move : MonoBehaviour {
 		if(col.gameObject.tag == "Blaze")
 		{
 			Enemy_Hp eHP = _EnemyHp.GetComponent<Enemy_Hp>();
-			eHP.damage = eHP._damage*1.1f;
+			eHP.damage = eHP.DefaultDamage*1.1f;
 			maxSpeed = defaultMaxSpeed*1.5f;
 		}
 		if(col.gameObject.tag=="FirePillar")

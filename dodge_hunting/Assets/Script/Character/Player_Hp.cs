@@ -34,8 +34,8 @@ public class Player_Hp : MonoBehaviour {
 			{
 	            enemy.GetComponent<Enemy_Hp>().damage = 0f;
     	        player.SetActive(false);
-				if(Time.timeScale!=0)
-					pauseManager.GetComponent<PauseManager>().TogglePauseMenu(-1);
+                if (Time.timeScale != 0)
+                    pauseManager.GetComponent<PauseManager>().ShowResult();
 			}
         }
         if (hp != prevHp) //전 프레임이랑 hp 값이 다를 때만 확인

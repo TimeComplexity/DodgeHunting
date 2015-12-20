@@ -26,7 +26,8 @@ public class Enemy_Move : MonoBehaviour {
 	public float angle;
 	public float preAngle;
 	public float speed_x;
-	public float speed_y;
+	public float speed_z;
+    public float speed_y; // 실제 y축 / 세로 좌표
 	public float maxSpeed;
 	public float accel;
 	public float fricForce;
@@ -58,8 +59,6 @@ public class Enemy_Move : MonoBehaviour {
         if(Variables.enemySwitch == -1)
         {
             Debug.Log("양 시작");
-            Debug.Log(Variables.enemySwitch);
-            Debug.Log(_sheep);
             _level = -1;
             _sheep.SetActive(true);
             com = GetComponent<Sheep>();
@@ -85,6 +84,7 @@ public class Enemy_Move : MonoBehaviour {
 			_suri.SetActive(true);
 			com = GetComponent<Suri>();
             GetComponent<Rigidbody>().useGravity = false;
+            //GetComponent<BoxCollider>().isTrigger = true;
 			com.setCool();
 		}
 		else if (Variables.enemySwitch == 101)
@@ -132,7 +132,7 @@ public class Enemy_Move : MonoBehaviour {
 		{
 			Debug.Log ("!!");
 			speed_x=0;
-			speed_y=0;
+			speed_z=0;
 			cantmoveCount=90;
 			skillSw=0;
 			com.skillCount[1]=-1;
@@ -140,14 +140,14 @@ public class Enemy_Move : MonoBehaviour {
 		}
 		if(coll.gameObject.tag == "IceWall")
 		{
-			if(speed_x>maxSpeed || speed_y>maxSpeed)
+			if(speed_x>maxSpeed || speed_z>maxSpeed)
 			{
 				Destroy (coll.gameObject);
 			}
 			else
 			{
 				speed_x=0;
-				speed_y=0;
+				speed_z=0;
 				cantmoveCount=120;
 				//skillSw=0;
 				sturnSw=true;
@@ -169,7 +169,7 @@ public class Enemy_Move : MonoBehaviour {
 		if(cycloneSw == true && coll.gameObject.name=="Floor")
 		{
 			speed_x=0;
-			speed_y=0;
+			speed_z=0;
 			cycloneSw=false;
 		}
 /*		if(coll.gameObject.tag=="Evidence")
@@ -191,7 +191,7 @@ public class Enemy_Move : MonoBehaviour {
 			wispSw=true;
 			cantmoveCount=120;
 			speed_x=0;
-			speed_y=0;
+			speed_z=0;
 		}
 		if(coll.gameObject.tag =="Bubble")
 		{
@@ -312,7 +312,7 @@ public class Enemy_Move : MonoBehaviour {
 				accel=defaultAccel;
 				fricForce=drfaultFricForce;
 				speed_x=0;
-				speed_y=0;
+				speed_z=0;
 				sturnSw=false;
 				wispSw=false;
 			}
@@ -362,13 +362,13 @@ public class Enemy_Move : MonoBehaviour {
 			{
 				wbSw=false;
 				speed_x=0;
-				speed_y=0;
+				speed_z=0;
 			}
 		}
 		else if(fearSw==true)
 		{
 			Debug.Log(fearSw);
-			transform.Translate(Vector3.left*Mathf.Sqrt(speed_x*speed_x+speed_y*speed_y));
+			transform.Translate(Vector3.left*Mathf.Sqrt(speed_x*speed_x+speed_z*speed_z));
 			--fearCount;
 			if(fearCount==0)
 			{

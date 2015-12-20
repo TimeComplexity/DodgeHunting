@@ -13,16 +13,21 @@ public class Suri : Enemy {
     public Vector2 circlePos;
     public Vector2 circleSpeed;
     public float circleAngle;
-    public int chaseCount;
+    //public int chaseCount;
     int raderCount = 0;
     int attackCount = 0;
+    int returnCount = 0;
+    int returnSw = 0;
     public Enemy_Move com;
     public Player_Move user;
     public Rader rad;
     // Use this for initialization
     void Start () {
-        //rader = (GameObject)Instantiate(defaultRader, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         
+    }
+    void update ()
+    {
+        //raderMove();
     }
 
 	public override void setCool()
@@ -65,7 +70,7 @@ public class Suri : Enemy {
         com.accel = com.defaultAccel;
         com.fricForce = com.drfaultFricForce;
 
-        this.transform.position = new Vector3(0, 3, 0);
+        this.transform.position = new Vector3(0, 5, 0);
     }
     
 	
@@ -106,9 +111,125 @@ public class Suri : Enemy {
         }
     }
 
+    public void Radar()
+    {
+        if (rad.triggerState == 1) // 레이더가 플레이어를 추적할 때 플레이어의 좌표로 따라가면서 점점 크기가 작아짐
+        {
+            circlePos.x = user.transform.position.x;
+            circlePos.y = user.transform.position.z;
+            circleDir.x = circlePos.x - rader.transform.position.x;
+            circleDir.y = circlePos.y - rader.transform.position.z;
+            circleAngle = Mathf.Atan2(circleDir.y, circleDir.x);
+            circleSpeed.x = 0.2f * Mathf.Cos(circleAngle);
+            circleSpeed.y = 0.2f * Mathf.Sin(circleAngle);
+
+            rader.transform.position = new Vector3(rader.transform.position.x + circleSpeed.x, 0, rader.transform.position.z + circleSpeed.y);
+
+            // 레이더 크기 축소
+            if (rader.transform.localScale.x < 2)
+            {
+                Debug.Log("레이더 축소 끝");
+                return;
+            }
+            else if (rader.transform.localScale.x > 1)
+            {
+                rader.transform.localScale += new Vector3(-0.3f, 0, -0.3f);
+            }
+
+            /*
+            if (rad.attackSw == 1)
+            {
+                rader.transform.position = new Vector3(-5, -5, -5);
+                return;
+            }
+            if (this.transform.localScale.x > 11)
+            {
+                Debug.Log("레이더 확장 끝");
+                return;
+            }
+            else if (this.transform.localScale.x < 9)
+            {
+                this.transform.localScale += new Vector3(0.7f, 0, 0.7f);
+            }
+            */
+        }
+        else if (rad.triggerState == 0) // 레이더가 플레이어를 추적하지 않을때 x는 -15부터 15까지 z는 -8부터 8까지 랜덤한 위치로 60프레임동안 이동
+        {
+            if (rad.transform.localScale.x < 10)
+            {
+                rader.transform.localScale += new Vector3(0.7f, 0, 0.7f);
+                if (rader.transform.localScale.x > 10)
+                {
+                    return;
+                }
+            }
+
+            raderCount++;
+            if (raderCount == 1)
+            {
+                circlePos.x = Random.Range(-15f, 15f);
+                circlePos.y = Random.Range(-8f, 8f);
+                circleDir.x = circlePos.x - rader.transform.position.x;
+                circleDir.y = circlePos.y - rader.transform.position.z;
+                circleAngle = Mathf.Atan2(circleDir.y, circleDir.x);
+                circleSpeed.x = 0.2f * Mathf.Cos(circleAngle);
+                circleSpeed.y = 0.2f * Mathf.Sin(circleAngle);
+            }
+            else if (raderCount < 60)
+            {
+                if (rader.transform.position.x > circlePos.x - 0.3f && rader.transform.position.x < circlePos.x + 0.3f)
+                {
+                    if (rader.transform.position.z > circlePos.y - 0.3f && rader.transform.position.z < circlePos.y + 0.3f)
+                    {
+                        circlePos.x = Random.Range(-15f, 15f);
+                        circlePos.y = Random.Range(-8f, 8f);
+                    }
+                }
+
+                if (rader.transform.position.x < -14 || rader.transform.position.x > 14)
+                {
+                    if (rader.transform.position.x < -14)
+                    {
+                        circlePos.x = Random.Range(1f, 15f);
+                        circlePos.y = Random.Range(-8f, 8f);
+                    }
+                    else if (rader.transform.position.x > 14)
+                    {
+                        circlePos.x = Random.Range(-15f, -1f);
+                        circlePos.y = Random.Range(-8f, 8f);
+                    }
+                }
+                else if (rader.transform.position.z < 7 || rader.transform.position.z > 7)
+                {
+                    if (rader.transform.position.z < -7)
+                    {
+                        circlePos.x = Random.Range(-15f, 15f);
+                        circlePos.y = Random.Range(1f, 8f);
+                    }
+                    else if (rader.transform.position.z > 7)
+                    {
+                        circlePos.x = Random.Range(-15f, 15f);
+                        circlePos.y = Random.Range(-8f, -1f);
+                    }
+                }
+                circleDir.x = circlePos.x - rader.transform.position.x;
+                circleDir.y = circlePos.y - rader.transform.position.z;
+                circleAngle = Mathf.Atan2(circleDir.y, circleDir.x);
+                circleSpeed.x = 0.2f * Mathf.Cos(circleAngle);
+                circleSpeed.y = 0.2f * Mathf.Sin(circleAngle);
+                rader.transform.position = new Vector3(rader.transform.position.x + circleSpeed.x, 0, rader.transform.position.z + circleSpeed.y);
+            }
+            else
+            {
+                raderCount = 0;
+            }
+        }
+    }
 	public void DefaultAct(bool pasSw)
 	{
-        if (rad.chaseCount == 1)
+        Radar();
+        /*
+        if (rad.chaseSw == 1) // 레이더가 플레이어를 추적할 때 플레이어의 좌표로 따라가면서 점점 크기가 작아짐
         {
             circlePos.x = user.transform.position.x;
             circlePos.y = user.transform.position.z;
@@ -118,69 +239,68 @@ public class Suri : Enemy {
             circleSpeed.x = 0.2f * Mathf.Cos(circleAngle);
             circleSpeed.y = 0.2f * Mathf.Sin(circleAngle);
             rader.transform.position = new Vector3(rader.transform.position.x + circleSpeed.x, 0, rader.transform.position.z + circleSpeed.y);
-            //
-            if (rad.attackReady == 1)
+
+            if (rad.attackSw == 1) // 크기가 완전히 작아져서 공격 준비 끝
             {
-                rader.SetActive(false);
-                attackCount++;
-                if (attackCount == 1)
+                rader.transform.position = new Vector3(-1, -10, -1);
+                while(attackCount<60)
                 {
-                    com.direction = user.transform.position - com.transform.position;
-                    circleAngle = Mathf.Atan2(com.direction.z, com.direction.x);
-                    com.speed_x = 0.4f * Mathf.Cos(circleAngle);
-                    com.speed_y = 0.4f * Mathf.Sin(circleAngle);
-                }
-                else if (attackCount < 60)
-                {
-                    com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y - 0.1f, com.transform.position.z + com.speed_y);
-                    /*if (com.transform.position.y < 0.3f)
+                    attackCount++;
+                    if (attackCount == 1)
                     {
-                        com.direction = new Vector3(0, 3, 0) - com.transform.position;
-                        circleAngle = Mathf.Atan2(com.direction.z, com.direction.x);
-                        com.speed_x = 0.2f * Mathf.Cos(circleAngle);
-                        com.speed_y = 0.2f * Mathf.Sin(circleAngle);
-                        attackCount = 60;
-                    }*/
-                }
-                /*
-                else if(attackCount == 61)
-                {
-                    com.direction = new Vector3(0, 3, 0) - com.transform.position;
-                    circleAngle = Mathf.Atan2(com.direction.z, com.direction.x);
-                    com.speed_x = 0.4f * Mathf.Cos(circleAngle);
-                    com.speed_y = 0.4f * Mathf.Sin(circleAngle);
-                }*/
-                else if(attackCount < 120)
-                {
-                    com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + 0.1f, com.transform.position.z + com.speed_y);
-                    /*
-                    if (com.transform.position.y > 2.9f)
-                    {
-                        rad.attackReady = 0;
-                        attackCount = 0;
-                        rad.attackReady = 0;
+                        com.direction = Vector3.Normalize(user.transform.position - com.transform.position);
+                        com.angle = Mathf.Atan2(com.direction.z, com.direction.x);
+                        com.speed_x = 0.4f * com.direction.x;
+                        com.speed_z = 0.4f * com.direction.z;
+                        com.speed_y = 0.4f * com.direction.y; // 각이 나오는 위치 주의
                     }
-                    */
+                    else if (attackCount < 60)
+                    {
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + com.speed_y, com.transform.position.z + com.speed_z);
+                        if (com.transform.position.y < 0.5)
+                        {
+                            Debug.Log("공격 끝");
+                            returnSw = 1;
+                            attackCount = 0;
+                            rad.attackSw = 0;
+                        }
+                    }
+                    else if (attackCount == 60)
+                    {
+                        Debug.Log("공격 끝");
+                        returnSw = 1;
+                        rad.attackSw = 0;
+                        attackCount = 0;
+                    }
                 }
-                else if (attackCount == 120)
+                if (returnSw == 1)
                 {
-                    com.transform.position = new Vector3(0, 4, 0);
-                    rader.SetActive(true);
-                    rad.attackReady = 0;
-                    attackCount = 0;
+                    while (returnCount < 60)
+                    {
+                        returnCount++;
+                        if (returnCount == 1)
+                        {
+                            com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y - 1.5f * com.speed_y, com.transform.position.z + com.speed_z);
+                        }
+                        else if (returnCount == 60)
+                        {
+                            Debug.Log("귀환끝");
+                            com.transform.position = new Vector3(0, 5, 0);
+                            //rad.attackSw = 0;
+                            //attackCount = 0;
+                            returnSw = 0;
+                        }
+                    }
                 }
             }
-            else if (rad.attackReady == 0)
+            
+            else if (rad.attackSw == 0)
             {
-                com.direction = new Vector3(0, 3, 0) - com.transform.position;
-                circleAngle = Mathf.Atan2(com.direction.z, com.direction.x);
-                com.speed_x = 0.4f * Mathf.Cos(circleAngle);
-                com.speed_y = 0.4f * Mathf.Sin(circleAngle);
-                com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + 0.1f, com.transform.position.z + com.speed_y);
+                rader.transform.position = new Vector3(Random.Range(-14, 14), 0.1f, Random.Range(-7, 7));
             }
 
         }
-        else if (rad.chaseCount == 0)
+        else if (rad.chaseSw == 0) // 레이더가 플레이어를 추적하지 않을때 x는 -15부터 15까지 z는 -8부터 8까지 랜덤한 위치로 60프레임동안 이동
         {
             raderCount++;
             if (raderCount == 1)
@@ -242,10 +362,7 @@ public class Suri : Enemy {
                 raderCount = 0;
             }
         }
-        //this.transform.position = new Vector3(this.transform.position.x, 3, this.transform.position.z);
-
-
-        //Debug.Log(count);
+        */
     }
     
 	public void ActSkill1() // Player Can't Use One Of Skills

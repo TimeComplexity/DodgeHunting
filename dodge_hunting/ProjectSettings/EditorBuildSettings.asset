@@ -23,5 +23,5 @@ EditorBuildSettings:
     path: Assets/Scene/TypeSelectScene.unity
   - enabled: 1
     path: Assets/Scene/SkillSelectScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/PracticeScene.unity

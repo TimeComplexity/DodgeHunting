@@ -106,11 +106,11 @@ public class wildBoar : Enemy {
 			if(Mathf.Abs (com.preAngle*Mathf.Rad2Deg - com.angle*Mathf.Rad2Deg)>60)
 			{
 				com.speed_x/=2;
-				com.speed_y/=2;
+				com.speed_z/=2;
 			}
 		}
 		com.speed_x += com.accel*Mathf.Cos (com.angle);
-		com.speed_y += com.accel*Mathf.Sin (com.angle);
+		com.speed_z += com.accel*Mathf.Sin (com.angle);
 		if(com.speed_x>0)
 		{
 			com.speed_x-=com.fricForce;
@@ -119,27 +119,27 @@ public class wildBoar : Enemy {
 		{
 			com.speed_x+=com.fricForce;
 		}
-		if(com.speed_y>0)
+		if(com.speed_z>0)
 		{
-			com.speed_y-=com.fricForce;
+			com.speed_z-=com.fricForce;
 		}
-		else if(com.speed_y<0)
+		else if(com.speed_z<0)
 		{
-			com.speed_y+=com.fricForce;
+			com.speed_z+=com.fricForce;
 		}
 		if (Mathf.Abs (com.speed_x) > Mathf.Abs(com.maxSpeed*Mathf.Cos (com.angle))) 
 		{
 			com.speed_x -= com.accel*Mathf.Cos (com.angle);
 		}
-		if (Mathf.Abs (com.speed_y) > Mathf.Abs (com.maxSpeed*Mathf.Sin (com.angle))) 
+		if (Mathf.Abs (com.speed_z) > Mathf.Abs (com.maxSpeed*Mathf.Sin (com.angle))) 
 		{
-			com.speed_y -= com.accel*Mathf.Sin (com.angle);
+			com.speed_z -= com.accel*Mathf.Sin (com.angle);
 		} //기본
 		/*com.speed_x = com.maxSpeed * Mathf.Cos (com.angle);
 		com.speed_y = com.maxSpeed * Mathf.Sin (com.angle);*/ // 가속도,마찰력X
 		com.preAngle = com.angle;
-		com.transform.rotation = Quaternion.Euler(0.0f, -1 * Mathf.Atan2(com.speed_y, com.speed_x) * Mathf.Rad2Deg, 0.0f);
-		com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y, com.transform.position.z + com.speed_y);
+		com.transform.rotation = Quaternion.Euler(0.0f, -1 * Mathf.Atan2(com.speed_z, com.speed_x) * Mathf.Rad2Deg, 0.0f);
+		com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y, com.transform.position.z + com.speed_z);
 	}
 	public void ActSkill1()
 	{
@@ -153,7 +153,7 @@ public class wildBoar : Enemy {
 		{
 			com.skillSw=0;
 			com.speed_x=0;
-			com.speed_y=0;
+			com.speed_z=0;
 			//com.speed_x=com.maxSpeed*Mathf.Cos (com.angle);
 			//com.speed_y=com.maxSpeed*Mathf.Sin (com.angle);
 			skillCount[1]=-1;
@@ -226,7 +226,7 @@ public class wildBoar : Enemy {
 				Instantiate(prefab,new Vector3(Random.Range(-14.0f,14.0f),0.5f,7.0f),Quaternion.identity);
 			}*/
 		}
-		com.transform.rotation = Quaternion.Euler(0.0f, -1 * Mathf.Atan2(com.speed_y, com.speed_x) * Mathf.Rad2Deg, 0.0f);
-		com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y, com.transform.position.z + com.speed_y);
+		com.transform.rotation = Quaternion.Euler(0.0f, -1 * Mathf.Atan2(com.speed_z, com.speed_x) * Mathf.Rad2Deg, 0.0f);
+		com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y, com.transform.position.z + com.speed_z);
 	}
 }

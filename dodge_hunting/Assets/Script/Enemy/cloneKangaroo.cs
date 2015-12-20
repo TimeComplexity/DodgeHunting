@@ -157,7 +157,7 @@ public class cloneKangaroo : Enemy
 
                     if (com.transform.position.y < 5)
                     {
-                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + 0.2f, com.transform.position.z + com.speed_y);
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + 0.2f, com.transform.position.z + com.speed_z);
                     }
                 }
                 if (count > 30 && count < 35)
@@ -169,10 +169,10 @@ public class cloneKangaroo : Enemy
                 else if (30 < count && count < 60) // 내려오는 점프
                 {
                     com.speed_x = 1.2f * Mathf.Cos(com.angle);
-                    com.speed_y = 1.2f * Mathf.Sin(com.angle);
+                    com.speed_z = 1.2f * Mathf.Sin(com.angle);
                     if (com.transform.position.y > 1)
                     {
-                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y - 0.3f, com.transform.position.z + com.speed_y);
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y - 0.3f, com.transform.position.z + com.speed_z);
                     }
                     if (count > 55)
                     {
@@ -190,11 +190,11 @@ public class cloneKangaroo : Enemy
                     KangVector();
                     if (com.transform.position.y < 35)
                     {
-                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x * 2f, com.transform.position.y + 3f, com.transform.position.z + com.speed_y * 2f);
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x * 2f, com.transform.position.y + 3f, com.transform.position.z + com.speed_z * 2f);
                     }
                     else if (com.transform.position.y > 35)
                     {
-                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x * 2f, com.transform.position.y, com.transform.position.z + com.speed_y * 2f);
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x * 2f, com.transform.position.y, com.transform.position.z + com.speed_z * 2f);
                     }
                 }
                 if (count > 30)
@@ -236,14 +236,14 @@ public class cloneKangaroo : Enemy
                 {
                     if (com.transform.position.y < 5)
                     {
-                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + 0.2f, com.transform.position.z + com.speed_y);
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y + 0.2f, com.transform.position.z + com.speed_z);
                     }
                 }
                 else if (count > 30 && count < 60)
                 {
                     if (com.transform.position.y > 1)
                     {
-                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y - 0.3f, com.transform.position.z + com.speed_y);
+                        com.transform.position = new Vector3(com.transform.position.x + com.speed_x, com.transform.position.y - 0.3f, com.transform.position.z + com.speed_z);
                     }
                 }
                 ++count;
@@ -256,8 +256,8 @@ public class cloneKangaroo : Enemy
         com.direction = com._player.transform.position - this._enemy.transform.position;
         com.angle = Mathf.Atan2(com.direction.z, com.direction.x);
         com.speed_x = 0.2f * Mathf.Cos(com.angle);
-        com.speed_y = 0.2f * Mathf.Sin(com.angle);
-        com.transform.rotation = Quaternion.Euler(0.0f, -1 * Mathf.Atan2(com.speed_y, com.speed_x) * Mathf.Rad2Deg, 0.0f);
+        com.speed_z = 0.2f * Mathf.Sin(com.angle);
+        com.transform.rotation = Quaternion.Euler(0.0f, -1 * Mathf.Atan2(com.speed_z, com.speed_x) * Mathf.Rad2Deg, 0.0f);
     }
 
     public void ActSkill1()

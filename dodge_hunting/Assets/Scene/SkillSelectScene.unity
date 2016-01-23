@@ -2005,37 +2005,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128d75b9a3c10a640bff55eb26830dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spr1:
-  - {fileID: 21300000, guid: 15baab60c2def0944981eb661daec0c0, type: 3}
-  - {fileID: 21300000, guid: 23a5a335f4329f449bb62acc8b91e8e1, type: 3}
-  - {fileID: 21300000, guid: 4ff76858b15377444a848b6d93fe88e7, type: 3}
-  - {fileID: 21300000, guid: 890323927f9b16844af79d3852fb6c88, type: 3}
-  spr2:
-  - {fileID: 21300000, guid: 2e16f6d857c074b4282fee97453fa174, type: 3}
-  - {fileID: 21300000, guid: e18043ed34aeb8f409bbda87e498e6cc, type: 3}
-  - {fileID: 21300000, guid: f449bf0a81f89e04daf8c34f4edf7662, type: 3}
-  - {fileID: 21300000, guid: 9f5be59addfd3884984982ba5cf26ef5, type: 3}
-  spr3:
-  - {fileID: 21300000, guid: e6b5ee1f2550531449376da0458d9cfa, type: 3}
-  - {fileID: 21300000, guid: b4ebc6eea9ddd9343b82b415a1b135f1, type: 3}
-  - {fileID: 21300000, guid: ac7dfab8c8c15d341a03924a12dab398, type: 3}
-  - {fileID: 21300000, guid: e8f26543c2f4bf1458bc1b5d59ba3601, type: 3}
-  spr4:
-  - {fileID: 21300000, guid: e0b6c77e1ffa9d34881d813698c1920c, type: 3}
-  - {fileID: 21300000, guid: 612f03271d5811742bc8279c31e312c0, type: 3}
-  - {fileID: 21300000, guid: 0fbf94cd04d764348bd8c5d80c180480, type: 3}
-  - {fileID: 21300000, guid: e105b52a89bbbc94daa9badfcc178de3, type: 3}
-  spr5:
-  - {fileID: 21300000, guid: e6b5ee1f2550531449376da0458d9cfa, type: 3}
-  - {fileID: 21300000, guid: 617d16ecb696b0d4488b015a342cfeef, type: 3}
-  - {fileID: 21300000, guid: 917e91f0f221fd74d99ac9917f9f3e60, type: 3}
-  - {fileID: 21300000, guid: 444e0d7c9c4908e43b1b40be4e812fbc, type: 3}
-  spr6:
-  - {fileID: 21300000, guid: e0b6c77e1ffa9d34881d813698c1920c, type: 3}
-  - {fileID: 21300000, guid: 612f03271d5811742bc8279c31e312c0, type: 3}
-  - {fileID: 21300000, guid: e321854a0db3c9d498ea097365563489, type: 3}
-  - {fileID: 21300000, guid: 80aac7bdd185eff49afebcf15f47f8fa, type: 3}
-  skillDefaultSprite: {fileID: 21300000, guid: 30216e624d59e384bbd910e439937e2a, type: 3}
+  skilldata:
+  - sprite: {fileID: 21300000, guid: 15baab60c2def0944981eb661daec0c0, type: 3}
+    name: "\uD3ED\uBC1C \uC9C0\uB8B0"
+    info: "\uB0B4 \uB4A4\uCABD\uC5D0 \uBC1F\uC73C\uBA74 \uD3ED\uBC1C\uD558\uB294 \uC9C0\uB8B0\uB97C
+      \uC124\uCE58\uD55C\uB2E4"
+  - sprite: {fileID: 21300000, guid: 2e16f6d857c074b4282fee97453fa174, type: 3}
+    name: "\uAC01\uC131"
+    info: "\uC77C\uC815\uC2DC\uAC04 \uB3D9\uC548 \uC790\uC2E0\uC758 \uCD5C\uB300\uC18D\uB3C4\uC640
+      \uAC00\uC18D\uB3C4\uB97C \uC99D\uAC00\uC2DC\uD0A8\uB2E4. \uC9C0\uC18D\uC2DC\uAC04\uC774
+      \uB05D\uB098\uBA74 \uBC18\uB3D9\uC73C\uB85C \uC77C\uC815\uC2DC\uAC04\uB3D9\uC548
+      \uCD5C\uB300\uC18D\uB3C4\uC640 \uAC00\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD55C\uB2E4."
+  - sprite: {fileID: 21300000, guid: e6b5ee1f2550531449376da0458d9cfa, type: 3}
+    name: "\uBD88\uAE30\uB465"
+    info: "\uB9F5\uC5D0 \uB79C\uB364\uD558\uAC8C 10\uCD08\uAC04 \uBD88\uAE30\uB465\uC744
+      3\uAC1C\uC529 \uC0DD\uC131\uD55C\uB2E4."
+  - sprite: {fileID: 21300000, guid: e0b6c77e1ffa9d34881d813698c1920c, type: 3}
+    name: "\uB3C4\uAE68\uBE44\uBD88"
+    info: "\uB3C4\uAE68\uBE44\uBD88\uC744 \uB9F5\uC5D0 \uC18C\uD658. \uB3C4\uAE68\uBE44\uBD88\uC740
+      \uB79C\uB364\uD558\uAC8C \uC6C0\uC9C1\uC778\uB2E4. \uB3C4\uAE68\uBE44\uBD88\uC5D0
+      \uB2FF\uC73C\uBA74 \uACF5\uD3EC\uC5D0 \uBE60\uC838 \uBA4B\uB300\uB85C \uC6C0\uC9C1\uC778\uB2E4."
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 21300000, guid: 23a5a335f4329f449bb62acc8b91e8e1, type: 3}
+    name: "\uBE44\uB217 \uBC29\uC6B8"
+    info: "\uB0B4 \uBA38\uB9AC\uC704\uCABD\uC5D0 \uBE44\uB217\uBC29\uC6B8\uC744 \uC18C\uD658,
+      \uD50C\uB808\uC774\uC5B4\uC640 \uB2FF\uC73C\uBA74 \uD295\uAE30\uACE0 \uC801\uC774
+      \uB2FF\uC73C\uBA74 \uBAB8\uC774 \uB728\uAC8C\uB418\uACE0 \uC18D\uBC15\uB41C\uB2E4.
+      \uAC15\uD654 : \uBE44\uB217\uBC29\uC6B8\uC774 3\uAC1C \uC18C\uD658\uB41C\uB2E4."
+  - sprite: {fileID: 21300000, guid: e18043ed34aeb8f409bbda87e498e6cc, type: 3}
+    name: "\uC5BC\uC74C\uBCBD"
+    info: "\uB0B4 \uB4A4\uCABD\uC5D0 \uC5BC\uC74C\uBCBD\uC744 \uC0DD\uC131. \uC801\uC774
+      \uBD80\uB52A\uCE58\uBA74 \uAE30\uC808\uC2DC\uD0A8\uB2E4. \uAC15\uD654 : \uC9C0\uC18D\uC2DC\uAC04
+      \uC99D\uAC00"
+  - sprite: {fileID: 21300000, guid: b4ebc6eea9ddd9343b82b415a1b135f1, type: 3}
+    name: "\uC548\uAC1C\uC0DD\uC131"
+    info: "\uB0B4 \uC911\uC2EC\uC73C\uB85C \uC6D0 \uBC18\uACBD\uC5D0 \uC548\uAC1C\uB97C
+      \uC0DD\uC131\uD55C\uB2E4. \uC548\uAC1C\uC18D\uC5D0\uC11C \uC801\uC740 \uD50C\uB808\uC774\uC5B4\uC758
+      \uBC29\uD5A5\uC744 \uC2DC\uAC01\uC73C\uB85C \uC54C\uC9C0 \uBABB\uD55C\uB2E4.
+      \uAC15\uD654 : \uD06C\uAE30 \uBC0F \uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00"
+  - sprite: {fileID: 21300000, guid: 612f03271d5811742bc8279c31e312c0, type: 3}
+    name: "\uBB3C\uD3ED\uD0C4"
+    info: "\uB9F5 \uC911\uC559\uC5D0 \uAC70\uB300\uD55C \uBB3C\uD3ED\uD0C4\uC744 \uB5A8\uC5B4\uB728\uB824
+      \uBAA8\uB4E0 \uCE90\uB9AD\uD130\uB97C \uBCBD\uCABD\uC73C\uB85C \uBC00\uC5B4\uB0B8\uB2E4.
+      \uAC15\uD654 : \uBB3C\uD3ED\uD0C4\uC774 \uD130\uC9C4\uD6C4 \uBC14\uB2E5\uC5D0
+      \uC5BC\uC74C \uC0DD\uC131"
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 21300000, guid: 4ff76858b15377444a848b6d93fe88e7, type: 3}
+    name: "\uC9C4\uACF5\uBCFC"
+    info: "\uBD88\uC548\uC815\uD55C \uC9C4\uACF5\uBCFC \uC0DD\uC131. \uCDA9\uB3CC\uC774
+      \uC77C\uC5B4\uB0A0 \uACBD\uC6B0 \uC7A0\uC2DC \uD6C4\uC5D0 \uC8FC\uC704\uC758
+      \uBAA8\uB4E0 \uAC83\uC744 \uD761\uC218\uD55C\uB2E4."
+  - sprite: {fileID: 21300000, guid: f449bf0a81f89e04daf8c34f4edf7662, type: 3}
+    name: "\uC810\uBA78"
+    info: "\uC9C4\uD589\uBC29\uD5A5 \uC55E\uBD80\uBD84\uC73C\uB85C \uC21C\uAC04\uC774\uB3D9\uD55C\uB2E4."
+  - sprite: {fileID: 21300000, guid: ac7dfab8c8c15d341a03924a12dab398, type: 3}
+    name: "\uBC14\uB78C\uB9C9"
+    info: "\uC801\uACFC \uCDA9\uB3CC\uD560 \uACBD\uC6B0 \uC801\uC744 \uD295\uACA8\uB0B4\uB294
+      \uBC14\uB78C\uB9C9\uC744 \uBAB8\uC5D0 \uC50C\uC6B4\uB2E4"
+  - sprite: {fileID: 21300000, guid: 0fbf94cd04d764348bd8c5d80c180480, type: 3}
+    name: "\uC2E0\uAE30\uB8E8"
+    info: "\uB098\uC640 \uB611\uAC19\uC774 \uC0DD\uAE34 \uC2E0\uAE30\uB8E8\uB97C 2\uAC1C
+      \uC18C\uD658\uD55C\uB2E4."
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
+  - sprite: {fileID: 0}
+    name: 
+    info: 
   infoButton:
   - {fileID: 371861176}
   - {fileID: 374828548}
@@ -2049,7 +2113,7 @@ MonoBehaviour:
   - {fileID: 1088690593}
   - {fileID: 214613948}
   selectedSkillIcon: {fileID: 829488187}
-  selectedSkillTitle: {fileID: 1174654145}
+  selectedSkillName: {fileID: 1174654145}
   selectecSkillInfo: {fileID: 561640362}
   typeIndex: 0
   selectedSlotIndex: -1
@@ -2542,6 +2606,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

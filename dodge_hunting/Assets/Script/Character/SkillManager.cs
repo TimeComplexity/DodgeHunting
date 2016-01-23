@@ -104,18 +104,90 @@ public class SkillManager : MonoBehaviour {
         {
             switch (index)
             {
-                case 0: selectedSkillIcon.GetComponent<Image>().sprite = spr1[typeIndex];
-                    break;
-                case 1: selectedSkillIcon.GetComponent<Image>().sprite = spr2[typeIndex];
-                    break;
-                case 2: selectedSkillIcon.GetComponent<Image>().sprite = spr3[typeIndex];
-                    break;
-                case 3: selectedSkillIcon.GetComponent<Image>().sprite = spr4[typeIndex];
-                    break;
-                case 4: selectedSkillIcon.GetComponent<Image>().sprite = spr5[typeIndex];
-                    break;
-                case 5: selectedSkillIcon.GetComponent<Image>().sprite = spr6[typeIndex];
-                    break;
+            case 0: 
+				selectedSkillIcon.GetComponent<Image>().sprite = spr1[typeIndex];
+				switch(typeIndex)
+				{
+				case 0:
+					selectedSkillTitle.GetComponent<Text>().text="폭발 지뢰";
+					selectecSkillInfo.GetComponent<Text>().text="내 뒤쪽에 밟으면 폭발하는 지뢰 설치";
+					break;
+				case 1:
+					selectedSkillTitle.GetComponent<Text>().text="비눗 방울";
+					selectecSkillInfo.GetComponent<Text>().text="내 머리위쪽에 비눗방울을 소환, 플레이어와 닿으면 튕기고 적이 닿으면 몸이 뜨게되고 속박된다." +
+																"\n강화 : 비눗방울이 3개 소환된다.";
+					break;
+				case 2:
+					selectedSkillTitle.GetComponent<Text>().text="진공볼";
+					selectecSkillInfo.GetComponent<Text>().text="불안정한 진공볼 생성.\n충돌이 일어날 경우 잠시 후에 주위의 모든 것을 흡수한다.";
+					break;
+				}
+                break;
+            case 1: 
+				selectedSkillIcon.GetComponent<Image>().sprite = spr2[typeIndex];
+				switch(typeIndex)
+				{
+				case 0:
+					selectedSkillTitle.GetComponent<Text>().text="각성";
+					selectecSkillInfo.GetComponent<Text>().text="일정시간 동안 자신의 최대속도와 가속도를 증가시킨다." +
+																"\n지속시간이 끝나면 반동으로 일정시간동안 최대속도와 가속도가 감소한다.";
+					break;
+				case 1:
+					selectedSkillTitle.GetComponent<Text>().text="얼음벽";
+					selectecSkillInfo.GetComponent<Text>().text="내 뒤쪽에 얼음벽을 생성. 적이 부딪치면 기절시킨다." +
+																"\n강화 : 지속시간 증가";
+					break;
+				case 2:
+					selectedSkillTitle.GetComponent<Text>().text="점멸";
+					selectecSkillInfo.GetComponent<Text>().text="진행방향 앞부분으로 순간이동한다.";
+					break;
+				}
+                break;
+            case 2: 
+				selectedSkillIcon.GetComponent<Image>().sprite = spr3[typeIndex];
+				switch(typeIndex)
+				{
+				case 0:
+					selectedSkillTitle.GetComponent<Text>().text="불기둥";
+					selectecSkillInfo.GetComponent<Text>().text="맵에 랜덤하게 10초간 불기둥을 3개씩 생성한다.";
+					break;
+				case 1:
+					selectedSkillTitle.GetComponent<Text>().text="안개생성";
+					selectecSkillInfo.GetComponent<Text>().text="내 중심으로 원 반경에 안개를 생성한다. 안개속에서 적은 플레이어의 방향을 시각으로 알지 못한다." +
+																"\n강화 : 크기 및 지속시간 증가";
+					break;
+				case 2:
+					selectedSkillTitle.GetComponent<Text>().text="바람막";
+					selectecSkillInfo.GetComponent<Text>().text="적과 충돌할 경우 적을 튕겨내는 바람막을 몸에 씌운다.";
+					break;
+				}
+                break;
+            case 3: 
+				selectedSkillIcon.GetComponent<Image>().sprite = spr4[typeIndex];
+				switch(typeIndex)
+				{
+				case 0:
+					selectedSkillTitle.GetComponent<Text>().text="도깨비불";
+					selectecSkillInfo.GetComponent<Text>().text="도깨비불을 맵에 소환. 도깨비불은 랜덤하게 움직인다." +
+																"\n도깨비불에 닿으면 공포에 빠져 멋대로 움직인다.";
+					break;
+				case 1:
+					selectedSkillTitle.GetComponent<Text>().text="물폭탄";
+					selectecSkillInfo.GetComponent<Text>().text="맵 중앙에 거대한 물폭탄을 떨어뜨려 모든 캐릭터를 벽쪽으로 밀어낸다." +
+																"\n강화 : 물폭탄이 터진후 바닥에 얼음 생성";
+					break;
+				case 2:
+					selectedSkillTitle.GetComponent<Text>().text="신기루";
+					selectecSkillInfo.GetComponent<Text>().text="나와 똑같이 생긴 신기루를 2개 소환한다.";
+					break;
+				}
+                break;
+            case 4: 
+				selectedSkillIcon.GetComponent<Image>().sprite = spr5[typeIndex];
+                break;
+            case 5: 
+				selectedSkillIcon.GetComponent<Image>().sprite = spr6[typeIndex];
+                break;
             }
         }
         else //슬롯을 선택한 경우
